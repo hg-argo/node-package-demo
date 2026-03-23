@@ -10,9 +10,6 @@
     "url": "git+https://github.com/hg-argo/node-package-demo.git"
   },
   "files": ["dist", "README.md", "CHANGELOG.md"],
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
-  },
   "exports": {
     ".": {
       "import": {

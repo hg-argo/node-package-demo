@@ -33,69 +33,25 @@ jobs:
           name: dist
           path: dist/
 
-  release:
+  release-github:
     name: Release (GitHub Packages)
     needs: ci
     if: github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
+    uses: ./.github/workflows/release-github.yml
     permissions:
       contents: write
-      packages: write
       issues: write
+      packages: write
       pull-requests: write
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: npm
-          registry-url: https://npm.pkg.github.com
-          scope: "@hg-argo"
-
-      - run: npm ci
-
-      - uses: actions/download-artifact@v4
-        with:
-          name: dist
-          path: dist/
-
-      - name: Release
-        run: npm run release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   release-npm:
     name: Release (npm)
     needs: ci
     if: github.ref == 'refs/heads/example'
-    runs-on: ubuntu-latest
+    uses: ./.github/workflows/release-npm.yml
     permissions:
       contents: write
       issues: write
       pull-requests: write
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: npm
-
-      - run: npm ci
-
-      - uses: actions/download-artifact@v4
-        with:
-          name: dist
-          path: dist/
-
-      - name: Release
-        run: npm run release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+    secrets:
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

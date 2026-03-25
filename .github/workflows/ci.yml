@@ -38,11 +38,20 @@ jobs:
     needs: ci
     if: github.ref == 'refs/heads/main'
     uses: ./.github/workflows/release-github.yml
+    permissions:
+      contents: write
+      issues: write
+      packages: write
+      pull-requests: write
 
   release-npm:
     name: Release (npm)
     needs: ci
     if: github.ref == 'refs/heads/example'
     uses: ./.github/workflows/release-npm.yml
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
     secrets:
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

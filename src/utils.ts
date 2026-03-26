@@ -9,6 +9,9 @@ const ANSI_COLORS = {
   white: '\x1b[37m',
 }
 
+/**
+ * @category Utilities
+ */
 export type LogColor = keyof typeof ANSI_COLORS
 
 const ANSI_RESET = '\x1b[0m'
@@ -18,6 +21,7 @@ const ANSI_RESET = '\x1b[0m'
  * Uses CSS styling in the browser and ANSI escape codes in Node.js.
  * @param message The message to log.
  * @param color The color to apply.
+ * @category Utilities
  */
 export function log(message: string, color: LogColor): void {
   // If window is defined, then we are in a browser environment, so we use the CSS colors to colorize log output

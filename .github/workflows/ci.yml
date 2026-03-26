@@ -36,7 +36,7 @@ jobs:
   release-github:
     name: Release (GitHub Packages)
     needs: ci
-    if: github.ref == 'refs/heads/main'
+    if: endsWith(github.ref, '/main')
     uses: ./.github/workflows/release-github.yml
     permissions:
       contents: write
@@ -47,7 +47,7 @@ jobs:
   release-npm:
     name: Release (npm)
     needs: ci
-    if: github.ref == 'refs/heads/example'
+    if: endsWith(github.ref, '/example')
     uses: ./.github/workflows/release-npm.yml
     permissions:
       contents: write
@@ -55,3 +55,12 @@ jobs:
       pull-requests: write
     secrets:
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  docs:
+    name: Documentation
+    needs: ci
+    if: endsWith(github.ref, '/develop')
+    uses: ./.github/workflows/docs.yml
+    permissions:
+      pages: write
+      id-token: write

@@ -1,8 +1,11 @@
 {
   "$schema": "https://typedoc.org/schema.json",
+  "name": "Node Package Demo",
   "entryPoints": ["src/index.ts"],
-  "out": "docs",
+  "out": "dist-docs",
   "excludePrivate": true,
   "excludeProtected": true,
+  "readme": "./README.md",
+  "projectDocuments": ["docs/**/*.md"],
   "tsconfig": "./tsconfig.json"
 }

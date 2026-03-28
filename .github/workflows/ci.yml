@@ -43,6 +43,7 @@ jobs:
       issues: write
       packages: write
       pull-requests: write
+    # secrets: inherit
 
   release-npm:
     name: Release (npm)
@@ -53,6 +54,7 @@ jobs:
       contents: write
       issues: write
       pull-requests: write
+    # secrets: inherit
     secrets:
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
@@ -64,3 +66,4 @@ jobs:
     permissions:
       pages: write
       id-token: write
+    # secrets: inherit

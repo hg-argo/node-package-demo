@@ -63,5 +63,6 @@ jobs:
     if: endsWith(github.ref, '/develop')
     uses: bear2b/.github-private/.github/workflows/node-deploy-docs.yml@master
     permissions:
+      contents: read
       pages: write
       id-token: write

@@ -37,7 +37,7 @@ jobs:
     name: Release (GitHub Packages)
     needs: ci
     if: endsWith(github.ref, '/main')
-    uses: ./.github/workflows/release-github.yml
+    uses: bear2b/.github-private/workflows/node/release-github.yml
     permissions:
       contents: write
       issues: write
@@ -48,7 +48,7 @@ jobs:
     name: Release (npm)
     needs: ci
     if: endsWith(github.ref, '/example')
-    uses: ./.github/workflows/release-npm.yml
+    uses: bear2b/.github-private/workflows/node/release-npm.yml
     permissions:
       contents: write
       issues: write
@@ -60,7 +60,7 @@ jobs:
     name: Documentation
     needs: ci
     if: endsWith(github.ref, '/develop')
-    uses: ./.github/workflows/docs.yml
+    uses: bear2b/.github-private/workflows/node/deploy-docs.yml
     permissions:
       pages: write
       id-token: write

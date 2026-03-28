@@ -2,7 +2,7 @@
   "$schema": "https://typedoc.org/schema.json",
   "name": "Node Package Demo",
   "entryPoints": ["src/index.ts"],
-  "out": "dist-docs",
+  "out": "site",
   "excludePrivate": true,
   "excludeProtected": true,
   "readme": "./README.md",

@@ -43,20 +43,19 @@ jobs:
       issues: write
       packages: write
       pull-requests: write
-    # secrets: inherit
 
-  release-npm:
-    name: Release (npm)
-    needs: ci
-    if: endsWith(github.ref, '/example')
-    uses: bear2b/.github-private/.github/workflows/node-release-npm.yml@master
-    permissions:
-      contents: write
-      issues: write
-      pull-requests: write
-    # secrets: inherit
-    secrets:
-      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+  # release-npm:
+  #   name: Release (npm)
+  #   needs: ci
+  #   if: endsWith(github.ref, '/example')
+  #   uses: bear2b/.github-private/.github/workflows/node-release-npm.yml@master
+  #   permissions:
+  #     contents: write
+  #     issues: write
+  #     packages: write
+  #     pull-requests: write
+  #   secrets:
+  #     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   docs:
     name: Documentation
@@ -66,4 +65,3 @@ jobs:
     permissions:
       pages: write
       id-token: write
-    # secrets: inherit
